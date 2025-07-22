@@ -1,0 +1,17 @@
+services:
+  - type: worker
+    name: telegram-cc-bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python telegram_cc_bot.py
+    plan: free
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: MAX_CARDS_PER_MASS_CHECK
+        value: 0
+      - key: DELAY_BETWEEN_CHECKS
+        value: 0.5
+      - key: PYTHON_VERSION
+        value: 3.11.0
+    autoDeploy: false
